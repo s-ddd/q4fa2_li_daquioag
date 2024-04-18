@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>multiplication table generator</title>
+</head>
+<body>
+    <h2>multiplication table generator!</h2>
+    <p>this will only support numbers from 2 to 10 so yeah</p>
+    <label for="base">base number</label>
+    <input type="number" id="base" min="2" max="10">
+    <label for="multiplier">multiplier</label>
+    <input type="number" id="multiplier" min="2" max="10">
+    <button onclick="generateTable()">generate your table</button>
+    <div id="table"></div>
+
+    <script>
+        function generateTable() {
+            var base = parseInt(document.getElementById("base").value);
+            var multiplier = parseInt(document.getElementById("multiplier").value);
+
+            // checks if both values are within the 2-10 range, otherwise alerts the user
+            if (base < 2 || base > 10 || multiplier < 2 || multiplier > 10) {
+                alert("one of the numbers isnt within the 2 to 10 range please check again");
+                return;
+            }
+
+            // generates the table
+            var table = "<table border='1'>";
+            for (var i = 1; i <= base; i++) {
+                table += "<tr>";
+                for (var j = 1; j <= multiplier; j++) {
+                    table += "<td>" + (i * j) + "</td>";
+                }
+                table += "</tr>";
+            }
+            table += "</table>";
+
+            document.getElementById("table").innerHTML = table;
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</body>
+</html>
